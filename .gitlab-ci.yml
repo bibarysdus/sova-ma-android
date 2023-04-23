@@ -3,6 +3,7 @@ image: jangrewe/gitlab-ci-android:29
 before_script:
   - export GRADLE_USER_HOME=$(pwd)/.gradle
   - chmod +x ./gradlew
+  - ls
 
 stages:
   - release
@@ -15,7 +16,8 @@ assembleRelease:
       - master
   script:
     - echo $KEYSTORE_FILE | base64 -d > app/sova.jks
-    - ./gradlew assemble
+    - ./gradlew 
+    - ls
     - mv app/build/outputs/apk/release/*.* .
   artifacts:
     paths:
